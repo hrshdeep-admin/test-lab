@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Testing Beta</title>
+    <title>Taxes Made Simple</title>
     <style>
         * {
             margin: 0;
@@ -12,64 +12,83 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             min-height: 100vh;
+            background-image: url('bg.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
             padding: 20px;
         }
 
         .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            padding: 40px;
-            max-width: 600px;
             width: 100%;
+            max-width: 500px;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px 30px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
         }
 
         h1 {
-            color: #333;
-            margin-bottom: 30px;
+            color: #e0f2fe;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 32px;
             text-align: center;
-            font-size: 2em;
+            letter-spacing: -0.5px;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 24px;
         }
 
         label {
             display: block;
+            color: #bae6fd;
+            font-size: 0.9rem;
+            font-weight: 500;
             margin-bottom: 8px;
-            color: #555;
-            font-weight: 600;
-            font-size: 0.95em;
+            letter-spacing: 0.3px;
         }
 
         input[type="text"],
+        input[type="tel"],
         textarea {
             width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1em;
+            padding: 14px 16px;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1.5px solid rgba(125, 211, 252, 0.3);
+            border-radius: 12px;
+            color: #f0f9ff;
+            font-size: 1rem;
             transition: all 0.3s ease;
-            font-family: inherit;
+            outline: none;
         }
 
         input[type="text"]:focus,
+        input[type="tel"]:focus,
         textarea:focus {
-            outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #7dd3fc;
+            background: rgba(30, 41, 59, 0.8);
+            box-shadow: 0 0 0 3px rgba(125, 211, 252, 0.1);
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #94a3b8;
         }
 
         textarea {
             resize: vertical;
             min-height: 100px;
+            font-family: inherit;
         }
 
         .file-input-wrapper {
@@ -88,149 +107,144 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 12px 20px;
-            background: #f5f5f5;
-            border: 2px dashed #d0d0d0;
-            border-radius: 8px;
+            padding: 14px 16px;
+            background: rgba(30, 41, 59, 0.6);
+            border: 1.5px dashed rgba(125, 211, 252, 0.3);
+            border-radius: 12px;
+            color: #bae6fd;
             cursor: pointer;
             transition: all 0.3s ease;
             text-align: center;
         }
 
         .file-input-label:hover {
-            background: #e8e8e8;
-            border-color: #667eea;
+            border-color: #7dd3fc;
+            background: rgba(30, 41, 59, 0.8);
         }
 
         .file-name {
             margin-top: 8px;
-            font-size: 0.9em;
-            color: #666;
-            font-style: italic;
+            color: #7dd3fc;
+            font-size: 0.85rem;
+            word-break: break-all;
         }
 
-        .phone-group {
-            display: flex;
-            gap: 10px;
-        }
-
-        .phone-prefix {
-            flex: 0 0 60px;
-            padding: 12px 10px;
-            background: #f5f5f5;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 600;
-            color: #555;
-        }
-
-        #phone {
-            flex: 1;
-        }
-
-        button[type="submit"] {
+        button {
             width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 16px;
+            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
             color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
+            border-radius: 12px;
+            font-size: 1.05rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 10px;
+            margin-top: 8px;
+            letter-spacing: 0.3px;
         }
 
-        button[type="submit"]:hover {
+        button:hover:not(:disabled) {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
         }
 
-        button[type="submit"]:disabled {
-            background: #ccc;
+        button:disabled {
+            opacity: 0.6;
             cursor: not-allowed;
-            transform: none;
         }
 
         .status-message {
             margin-top: 20px;
-            padding: 15px;
-            border-radius: 8px;
+            padding: 16px;
+            background: rgba(30, 41, 59, 0.8);
+            border-radius: 12px;
+            color: #bae6fd;
             text-align: center;
+            font-size: 0.95rem;
             display: none;
+            border: 1px solid rgba(125, 211, 252, 0.3);
         }
 
-        .status-message.success {
-            background: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+        .status-message.show {
+            display: block;
         }
 
         .status-message.error {
-            background: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+            background: rgba(127, 29, 29, 0.8);
+            color: #fecaca;
+            border-color: rgba(239, 68, 68, 0.3);
         }
 
-        .status-message.loading {
-            background: #d1ecf1;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
+        .status-message.success {
+            background: rgba(20, 83, 45, 0.8);
+            color: #bbf7d0;
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 30px 20px;
+                border-radius: 20px;
+            }
+
+            h1 {
+                font-size: 1.75rem;
+                margin-bottom: 28px;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Testing Beta</h1>
-        <form id="clientForm">
+        <h1>Taxes made simple.</h1>
+        <form id="taxForm">
             <div class="form-group">
-                <label for="name">Name *</label>
-                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required>
             </div>
 
             <div class="form-group">
-                <label for="id">ID Document (PDF) *</label>
-                <div class="file-input-wrapper">
-                    <input type="file" id="id" name="id" accept=".pdf" required>
-                    <label for="id" class="file-input-label">
-                        📄 Choose PDF File
-                    </label>
-                </div>
-                <div class="file-name" id="idFileName"></div>
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
             </div>
 
             <div class="form-group">
-                <label for="document1">Document 1 (PDF) *</label>
+                <label for="document1">Document 1 (PDF)</label>
                 <div class="file-input-wrapper">
                     <input type="file" id="document1" name="document1" accept=".pdf" required>
                     <label for="document1" class="file-input-label">
-                        📄 Choose PDF File
+                        📄 Choose PDF file
                     </label>
                 </div>
-                <div class="file-name" id="doc1FileName"></div>
+                <div id="file1Name" class="file-name"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="document2">Document 2 (PDF)</label>
+                <div class="file-input-wrapper">
+                    <input type="file" id="document2" name="document2" accept=".pdf" required>
+                    <label for="document2" class="file-input-label">
+                        📄 Choose PDF file
+                    </label>
+                </div>
+                <div id="file2Name" class="file-name"></div>
             </div>
 
             <div class="form-group">
                 <label for="notes">Additional Notes</label>
-                <textarea id="notes" name="notes" placeholder="Enter any additional notes here..."></textarea>
+                <textarea id="notes" name="notes" placeholder="Any additional information you'd like to share..."></textarea>
             </div>
 
-            <div class="form-group">
-                <label for="phone">Phone Number *</label>
-                <div class="phone-group">
-                    <div class="phone-prefix">+1</div>
-                    <input type="text" id="phone" name="phone" required 
-                           placeholder="(XXX) XXX-XXXX" 
-                           maxlength="14">
-                </div>
-            </div>
-
-            <button type="submit">Submit</button>
+            <button type="submit" id="submitBtn">Submit Documents</button>
         </form>
 
-        <div class="status-message" id="statusMessage"></div>
+        <div id="statusMessage" class="status-message"></div>
     </div>
 
     <script>
@@ -240,9 +254,9 @@
             let value = e.target.value.replace(/\D/g, '');
             if (value.length > 10) value = value.slice(0, 10);
             
-            if (value.length > 6) {
+            if (value.length >= 6) {
                 value = `(${value.slice(0, 3)}) ${value.slice(3, 6)}-${value.slice(6)}`;
-            } else if (value.length > 3) {
+            } else if (value.length >= 3) {
                 value = `(${value.slice(0, 3)}) ${value.slice(3)}`;
             } else if (value.length > 0) {
                 value = `(${value}`;
@@ -251,117 +265,61 @@
             e.target.value = value;
         });
 
-        // File name display
-        document.getElementById('id').addEventListener('change', function(e) {
-            const fileName = e.target.files[0]?.name || '';
-            document.getElementById('idFileName').textContent = fileName ? `Selected: ${fileName}` : '';
-        });
-
+        // File input display
         document.getElementById('document1').addEventListener('change', function(e) {
             const fileName = e.target.files[0]?.name || '';
-            document.getElementById('doc1FileName').textContent = fileName ? `Selected: ${fileName}` : '';
+            document.getElementById('file1Name').textContent = fileName ? `Selected: ${fileName}` : '';
+        });
+
+        document.getElementById('document2').addEventListener('change', function(e) {
+            const fileName = e.target.files[0]?.name || '';
+            document.getElementById('file2Name').textContent = fileName ? `Selected: ${fileName}` : '';
         });
 
         // Form submission
-        document.getElementById('clientForm').addEventListener('submit', async function(e) {
+        document.getElementById('taxForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const statusDiv = document.getElementById('statusMessage');
-            const submitBtn = e.target.querySelector('button[type="submit"]');
+            const submitBtn = document.getElementById('submitBtn');
+            const statusMessage = document.getElementById('statusMessage');
             
-            // Get form values
-            const name = document.getElementById('name').value;
-            const notes = document.getElementById('notes').value;
-            const phone = document.getElementById('phone').value.replace(/\D/g, '');
-            const idFile = document.getElementById('id').files[0];
-            const doc1File = document.getElementById('document1').files[0];
-            
-            // Validate phone number
-            if (phone.length !== 10) {
-                showStatus('Please enter a valid 10-digit phone number', 'error');
-                return;
-            }
-            
-            // Show loading
             submitBtn.disabled = true;
-            showStatus('Uploading files to Google Drive...', 'loading');
+            submitBtn.textContent = 'Uploading...';
+            
+            statusMessage.className = 'status-message show';
+            statusMessage.textContent = '📤 Uploading files now, do not close this window...';
             
             try {
-                // Convert files to base64
-                const idBase64 = await fileToBase64(idFile);
-                const doc1Base64 = await fileToBase64(doc1File);
-                
-                // Prepare data for Cloudflare Worker
-                const data = {
-                    name: name,
-                    notes: notes,
-                    phone: phone,
-                    files: {
-                        id: {
-                            name: idFile.name,
-                            data: idBase64,
-                            mimeType: 'application/pdf'
-                        },
-                        document1: {
-                            name: doc1File.name,
-                            data: doc1Base64,
-                            mimeType: 'application/pdf'
-                        }
-                    }
-                };
+                const formData = new FormData();
+                formData.append('name', document.getElementById('name').value);
+                formData.append('phone', document.getElementById('phone').value.replace(/\D/g, ''));
+                formData.append('notes', document.getElementById('notes').value);
+                formData.append('document1', document.getElementById('document1').files[0]);
+                formData.append('document2', document.getElementById('document2').files[0]);
                 
                 // TODO: Replace with your Cloudflare Worker URL
-                const WORKER_URL = '  https://testing-beta-upload.harshdeep-inbox.workers.dev';
-                
-                const response = await fetch(WORKER_URL, {
+                const response = await fetch('YOUR_CLOUDFLARE_WORKER_URL', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
+                    body: formData
                 });
                 
-                if (!response.ok) {
+                if (response.ok) {
+                    statusMessage.className = 'status-message show success';
+                    statusMessage.textContent = '✅ Documents uploaded successfully! Thank you.';
+                    document.getElementById('taxForm').reset();
+                    document.getElementById('file1Name').textContent = '';
+                    document.getElementById('file2Name').textContent = '';
+                } else {
                     throw new Error('Upload failed');
                 }
-                
-                const result = await response.json();
-                showStatus('Files uploaded successfully!', 'success');
-                
-                // Reset form after 2 seconds
-                setTimeout(() => {
-                    document.getElementById('clientForm').reset();
-                    document.getElementById('idFileName').textContent = '';
-                    document.getElementById('doc1FileName').textContent = '';
-                    statusDiv.style.display = 'none';
-                }, 2000);
-                
             } catch (error) {
-                console.error('Error:', error);
-                showStatus('Error uploading files. Please try again.', 'error');
+                statusMessage.className = 'status-message show error';
+                statusMessage.textContent = '❌ Upload failed. Please try again.';
             } finally {
                 submitBtn.disabled = false;
+                submitBtn.textContent = 'Submit Documents';
             }
         });
-        
-        function fileToBase64(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = () => {
-                    const base64 = reader.result.split(',')[1];
-                    resolve(base64);
-                };
-                reader.onerror = reject;
-                reader.readAsDataURL(file);
-            });
-        }
-        
-        function showStatus(message, type) {
-            const statusDiv = document.getElementById('statusMessage');
-            statusDiv.textContent = message;
-            statusDiv.className = `status-message ${type}`;
-            statusDiv.style.display = 'block';
-        }
     </script>
 </body>
 </html>
